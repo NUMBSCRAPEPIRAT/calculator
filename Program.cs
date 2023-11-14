@@ -1,7 +1,37 @@
-﻿using System;
-
+﻿
+using System;
 class Calculator
 {
+    public delegate int Calculate(int x, int y);
+    static int Add(int x, int y)
+    {
+        return x + y;
+    }
+
+    static int Subtract(int x, int y)
+    {
+        return x - y;
+    }
+
+
+public delegate int Calculate_2(int x, int y);
+
+        static int Multiply(int x, int y)
+    {
+        return x * y;
+    }
+    static int Division(int x, int y){
+        return x/y;
+    }
+     static int Add_1(int x, int y)
+    {
+        return x + y;
+    }
+
+    static int Subtract_2(int x, int y)
+    {
+        return x - y;
+    }
     static void Main()
     {
         try
@@ -32,12 +62,12 @@ class Calculator
                 case '/':
                     if (num2 == 0)
                     {
-                        throw new DivideByZeroException("Деление на ноль невозможно.");
+                        throw new DivideByZeroException();
                     }
                     result = num1 / num2;
                     break;
                 default:
-                    throw new InvalidOperationException("Неверная операция.");
+                    throw new InvalidOperationException();
             }
 
             Console.WriteLine($"Результат: {result}");
@@ -46,13 +76,13 @@ class Calculator
         {
             Console.WriteLine("Ошибка в формате ввода числа.");
         }
-        catch (DivideByZeroException ex)
+        catch (DivideByZeroException)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            Console.WriteLine("Деление на 0 невозможно");
         }
-        catch (InvalidOperationException ex)
+        catch (InvalidOperationException)
         {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            Console.WriteLine("Неверная операция.");
         }
         catch (Exception)
         {
@@ -60,3 +90,8 @@ class Calculator
         }
     }
 }
+
+
+
+
+
